@@ -7,9 +7,14 @@ from check_available import get_available_tool, get_available_language
 tool = get_available_tool()
 lang = get_available_language(tool)
 
-txt = tool.image_to_string(
-    Image.open('data/1.jpg'),
-    lang=lang,
-    builder=pyocr.builders.TextBuilder()
-)
+
+def image_to_string(tool, lang, filename):
+    return tool.image_to_string(
+        Image.open(filename),
+        lang=lang,
+        builder=pyocr.builders.TextBuilder()
+    )
+
+filename = 'data/1.jpg'
+txt = image_to_string(tool, lang, filename)
 print(txt)
