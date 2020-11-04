@@ -1,8 +1,5 @@
-from PIL import Image
 import sys
-
 import pyocr
-import pyocr.builders
 
 
 def get_available_tool():
