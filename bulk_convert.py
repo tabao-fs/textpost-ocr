@@ -1,4 +1,5 @@
 import glob
+import os
 
 from check_available import (
     get_available_tool, get_available_language,
@@ -15,6 +16,12 @@ def get_images(path):
     return images
 
 
+def bulk_convert_images(images):
+    for image in images:
+        filename = os.path.basename(image)
+        print(filename)
+
+
 if __name__ == '__main__':
     '''
     Bulk convert images to texts
@@ -23,5 +30,6 @@ if __name__ == '__main__':
     lang = get_available_language(tool)
     builder = get_text_builder()
     path = 'data/'
+
     images = get_images(path)
-    print(images)
+    bulk_convert_images(images)
