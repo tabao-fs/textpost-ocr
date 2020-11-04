@@ -1,5 +1,6 @@
 import sys
 import pyocr
+import pyocr.builders
 
 
 def get_available_tool():
@@ -14,6 +15,10 @@ def get_available_tool():
 def get_available_language(tool):
     langs = tool.get_available_languages()
     return langs[0]
+
+
+def get_text_builder():
+    return pyocr.builders.TextBuilder()
 
 
 if __name__ == '__main__':
