@@ -13,3 +13,4 @@ __pycache__
 *.sublime-workspace
 
 /data
+/output
