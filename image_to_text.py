@@ -1,9 +1,10 @@
 from PIL import Image
 import codecs
-import pyocr.builders
 
-from check_available import get_available_tool, get_available_language
-
+from check_available import (
+    get_available_tool, get_available_language,
+    get_text_builder
+)
 
 def image_to_string(tool, lang, builder, filename):
     return tool.image_to_string(
@@ -24,7 +25,7 @@ if __name__ == '__main__':
     '''
     tool = get_available_tool()
     lang = get_available_language(tool)
-    builder = pyocr.builders.TextBuilder()
+    builder = get_text_builder()
     filename = 'data/1.jpg'
 
     txt = image_to_string(tool, lang, builder, filename)
