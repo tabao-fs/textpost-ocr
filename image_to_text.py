@@ -1,4 +1,5 @@
 from PIL import Image
+import codecs
 import pyocr.builders
 
 from check_available import get_available_tool, get_available_language
@@ -22,4 +23,7 @@ if __name__ == '__main__':
     filename = 'data/1.jpg'
 
     txt = image_to_string(tool, lang, builder, filename)
+    with codecs.open("output/1.txt", 'w', encoding='utf-8') as file_descriptor:
+        builder.write_file(file_descriptor, txt)
+
     print(txt)
