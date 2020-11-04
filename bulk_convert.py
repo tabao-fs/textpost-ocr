@@ -9,7 +9,9 @@ from image_to_text import image_to_string, write_text_file
 
 
 EXTENSIONS = ('*.jpg', '*.jpeg', '*.png')
+INPUT = 'data/'
 OUTPUT = 'output/'
+TXT_EXTENSION = '.txt'
 
 
 def get_images(path):
@@ -23,7 +25,7 @@ def bulk_convert_images(images, tool, lang, builder):
     for image in images:
         filename = os.path.basename(image)
         txt = image_to_string(tool, lang, builder, image)
-        write_text_file(OUTPUT + filename + '.txt', txt, builder)
+        write_text_file(OUTPUT + filename + TXT_EXTENSION, txt, builder)
 
 
 if __name__ == '__main__':
@@ -33,7 +35,6 @@ if __name__ == '__main__':
     tool = get_available_tool()
     lang = get_available_language(tool)
     builder = get_text_builder()
-    path = 'data/'
 
-    images = get_images(path)
+    images = get_images(INPUT)
     bulk_convert_images(images, tool, lang, builder)
