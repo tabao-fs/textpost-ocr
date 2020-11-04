@@ -13,6 +13,11 @@ def image_to_string(tool, lang, builder, filename):
     )
 
 
+def write_text_file(filename, text, builder):
+    with codecs.open(filename, 'w', encoding='utf-8') as file_descriptor:
+        builder.write_file(file_descriptor, text)
+
+
 if __name__ == '__main__':
     '''
     Convert image to text
@@ -23,7 +28,8 @@ if __name__ == '__main__':
     filename = 'data/1.jpg'
 
     txt = image_to_string(tool, lang, builder, filename)
-    with codecs.open("output/1.txt", 'w', encoding='utf-8') as file_descriptor:
-        builder.write_file(file_descriptor, txt)
+
+    filename = 'output/1.txt'
+    write_text_file(filename, txt, builder)
 
     print(txt)
