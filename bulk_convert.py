@@ -5,8 +5,11 @@ from check_available import (
     get_available_tool, get_available_language,
     get_text_builder
 )
+from image_to_text import image_to_string, write_text_file
+
 
 EXTENSIONS = ('*.jpg', '*.jpeg', '*.png')
+OUTPUT = 'output/'
 
 
 def get_images(path):
@@ -16,10 +19,11 @@ def get_images(path):
     return images
 
 
-def bulk_convert_images(images):
+def bulk_convert_images(images, tool, lang, builder):
     for image in images:
         filename = os.path.basename(image)
-        print(filename)
+        txt = image_to_string(tool, lang, builder, image)
+        write_text_file(OUTPUT + filename + '.txt', txt, builder)
 
 
 if __name__ == '__main__':
@@ -32,4 +36,4 @@ if __name__ == '__main__':
     path = 'data/'
 
     images = get_images(path)
-    bulk_convert_images(images)
+    bulk_convert_images(images, tool, lang, builder)
