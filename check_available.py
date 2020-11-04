@@ -13,13 +13,18 @@ def get_available_tool():
 
     return tools[0]
 
-tool = get_available_tool()
-print("Will use tool: '%s'" % (tool.get_name()))
-
 
 def get_available_language(tool):
     langs = tool.get_available_languages()
     return langs[0]
 
-lang = get_available_language(tool)
-print("Will use lang: '%s'" % (lang))
+
+if __name__ == '__main__':
+    '''
+    Check available tool and language
+    '''
+    tool = get_available_tool()
+    print("Tool: '%s'" % (tool.get_name()))
+
+    lang = get_available_language(tool)
+    print("Lang: '%s'" % (lang))
